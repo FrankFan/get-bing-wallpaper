@@ -1,0 +1,20 @@
+{
+  "name": "GetBingWallPaper",
+  "version": "1.0.0",
+  "description": "Chrome extension to get Bing WallPaper",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrankFan/get-bing-wallpaper.git"
+  },
+  "keywords": [
+    "bing",
+    "bing wallpaper",
+    "wallpaper",
+  ],
+  "author": "fy98.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FrankFan/get-bing-wallpaper/issues"
+  },
+  "homepage": "https://github.com/FrankFan/get-bing-wallpaper"
+}
