@@ -5,22 +5,28 @@
  */
 
 var BingHelper = (function() {
-  // "url("https://cn.bing.com/az/hprichbg/rb/UmbriaCastelluccio_ZH-CN9645718473_1920x1080.jpg")"
-  var REG_BG_IMG = /[a-zA-z]+:\/\/[^\s]*.jpg|.png|.jpeg|.webp$/g
   var getBgImg = function() {
+    var imgFullUrl = '';
     if (~window.location.host.indexOf('bing.com')) {
       var theDiv = document.getElementById('bgDiv');
       if (!theDiv) {
         console.log("%cNot Found the Element", "color:red;font-weight:bold;");
         return;
       }
-      var bgImgStr = window.getComputedStyle(theDiv ,null).getPropertyValue('background-image');
-      var arrRes = bgImgStr.match(REG_BG_IMG);
-      return (arrRes.length > 0) && arrRes[0];
+      imgFullUrl = _getBingWallPaperBgImgPath(theDiv);
     } else {
-      console.log("%cnot bing.com", "color:red;font-weight:bold;");
+      console.log("%c不在bing.com下", "color:red;font-weight:bold;");
     }
+    return imgFullUrl;
   }
+
+  var _getBingWallPaperBgImgPath = function(theDiv) {
+    // 获取背景图片的 background-image 属性
+    var bgImage = getComputedStyle(theDiv).backgroundImage;
+    var regObj = bgImage.match(/url\("(\S*)"\)/);
+    return regObj && regObj.length > 1 && regObj[1];
+  }
+
   return {
     getBgImg: getBgImg,
   }
@@ -28,7 +34,9 @@ var BingHelper = (function() {
 
 var bingLogo = document.querySelector('.hp_sw_logo.hpcLogoWhite');
 bingLogo && bingLogo.addEventListener('click', function() {
-  BingHelper.getBgImg();
+  var bgImgUrl = BingHelper.getBgImg();
+  console.log("%c" + bgImgUrl, "color:red;font-weight:bold;");
+  window.open(bgImgUrl, '_blank');
 });
 
 (function() {
