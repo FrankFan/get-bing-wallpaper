@@ -32,7 +32,8 @@ var BingHelper = (function() {
   }
 })();
 
-var bingLogo = document.querySelector('.hp_sw_logo.hpcLogoWhite');
+// var bingLogo = document.querySelector('.hp_sw_logo.hpcLogoWhite');
+var bingLogo = document.querySelector('#bLogo');
 bingLogo && bingLogo.addEventListener('click', function() {
   var bgImgUrl = BingHelper.getBgImg();
   console.log("%c" + bgImgUrl, "color:red;font-weight:bold;");
